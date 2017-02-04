@@ -1,0 +1,26 @@
+{
+  "name": "chromatic-cabinet",
+  "version": "1.0.0",
+  "description": "Exercises for exploring history of colorspaces",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulbil/chromatic-cabinet.git"
+  },
+  "author": "Nabil Kashyap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bulbil/chromatic-cabinet/issues"
+  },
+  "homepage": "https://github.com/bulbil/chromatic-cabinet#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "jshint": "^2.9.4",
+    "wiredep": "^4.0.0"
+  }
+}
