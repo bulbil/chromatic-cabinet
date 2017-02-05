@@ -1,0 +1,23 @@
+{
+  "name": "chromatic-cabinet",
+  "description": "Exercises for exploring history of colorspaces",
+  "authors": [
+    "Nabil Kashyap"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/bulbil/chromatic-cabinet",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "three.js": "^0.84.0",
+    "three.js-controls": "^0.0.67",
+    "reset-css": "^2.2.0"
+  }
+}
