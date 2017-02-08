@@ -1,3 +1,5 @@
 
-cube.init();
-cube.animate();
+// cube.init();
+// cube.animate();
+
+channels.init();
