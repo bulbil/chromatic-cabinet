@@ -4,6 +4,7 @@
 
 var cube = {
 
+    // setting constants used by three.js scene
     size: 512,
     camera: null,
     controls: null,
@@ -19,9 +20,12 @@ var cube = {
     init: function (){
 
         this.el.appendChild( this.container );
+
+        // camera parameters
         this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
         this.camera.position.z = 1000;
 
+        // controls parameters
         this.controls = new THREE.TrackballControls( this.camera );
         this.controls.rotateSpeed = 1.5;
         this.controls.zoomSpeed = 1.2;
@@ -34,6 +38,7 @@ var cube = {
         this.controls.maxDistance = 10200;
         this.scene = new THREE.Scene();
 
+        // ambient light parameters (not necessary with basic mesh material but is with lambert mesh)
         var ambient = ( new THREE.AmbientLight( 0xffffff ) );
         this.lights.push(ambient);
 
@@ -46,24 +51,32 @@ var cube = {
         // spot.shadow.mapSize.height = 2048;
         // this.lights.push(spot);
 
-
+        // add lights to scene
         for (light of this.lights) {
             this.scene.add( light );
         }
 
+        // based on Stemkoski stackoverflow example -- assigns colors to vertices, assigns vertices to faces
+
+        // convenience array
         var cubeFaces = [ 'a', 'b', 'c', 'd', 'e', 'f'];
 
         this.geometry = new THREE.CubeGeometry( this.size, this.size, this.size );
         this.geometry.colorsNeedUpdate = true;
 
+        // iterate through vertices in cubegeometry, create colors, add to geometry colors
         for (var i = 0; i < this.geometry.vertices.length; i++){
             point = this.geometry.vertices[i];
-            console.log(point);
-            color = new THREE.Color( 0xffffff );
+
+            var color = new THREE.Color( 0xffffff );
+
+            // setting 1 or 0 depending on if point > 0 or < 0
             color.setRGB( 0.5 + point.x / this.size, 0.5 + point.y / this.size, 0.5 + point.z / this.size );
+
             this.geometry.colors[i] = color;
         }
 
+        // iterate through faces and assign colors vertices grouped in face
         for (var i = 0; i < this.geometry.faces.length; i++){
             face = this.geometry.faces[i];
             numSides = ( face instanceof THREE.Face3 ) ? 3 : 4;
@@ -73,9 +86,11 @@ var cube = {
             }   
         } 
 
-        var rgbMaterial = new THREE.MeshLambertMaterial({
+        var rgbMaterial = new THREE.MeshBasicMaterial({
                 color: 0xffffff,
+                wireframe: true,
                 shading: THREE.FlatShading,
+                // enable vertex colors, which looks for vertexColors array in each face
                 vertexColors: THREE.VertexColors
             });
 

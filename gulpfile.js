@@ -19,10 +19,6 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('styles', function(){
-    // var glob = mainBowerFiles('**/*.scss');
-    // glob.push('sass/**/*.scss');
-    // console.log(glob);
-
     return gulp.src('sass/**/*.scss')
         .pipe(sass({
             includePaths: [ 'bower_components']
@@ -40,10 +36,13 @@ gulp.task('serve', ['scripts','styles','static'], function () {
 });
 
 gulp.task('dependencies', function(){
-    return gulp.src(mainBowerFiles('**/*.js'))
-    .pipe(concat('deps.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
+    var glob = mainBowerFiles('*.js');
+    glob.push('deps/**/*.js');
+    console.log(glob);
+    return gulp.src(glob)
+        .pipe(concat('deps.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('watch',function(){
