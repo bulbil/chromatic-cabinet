@@ -1,49 +1,60 @@
 
 var channels = {
 
-    asciiContainer: document.getElementById("ascii"),
+    asciiContainers: [
+        document.getElementById("r-corrected"),
+        document.getElementById("g-corrected"),
+        document.getElementById("b-corrected"),
+        document.getElementById("r"),
+        document.getElementById("g"),
+        document.getElementById("b")
+    ],
+    camera: null,
     capturing: false,
+    width: 100,
+    height: 100,
+    fps: 1,
+    mirror: true,
     init: function(){
 
         camera.init({
 
-            width: 160,
-            height: 120,
-            fps: 30,
-            mirror: true,
+            width: this.width,
+            height: this.height,
+            fps: this.fps,
+            mirror: this.mirror,
 
             onFrame: function(canvas) {
 
-                condole.log('here');
-
-                ascii.fromCanvas(canvas, {
+                ascii.channelFromCanvas(canvas, {
                     // contrast: 128,
-                    callback: function(asciiString) {
-                        this.asciiContainer.innerHTML = asciiString;
-                    }
+                    callback: function(asciiStrings) {
+
+                        for (var i =0; i < this.asciiContainers.length; i++){
+                            this.asciiContainers[i].innerHTML = asciiStrings[i];
+                        }
+                    }.bind(this)
                 });
-            },
+            }.bind(this),
 
             onSuccess: function() {
 
-                camera.start();
+                document.getElementById("info").style.display = "none";
 
-                // console.log(this.capturing.bind(this));
+                this.camera = camera;
 
-                // document.getElementById("info").style.display = "none";
-
-                // capturing = true;
-                // document.getElementById("pause").style.display = "block";
-                // document.getElementById("pause").onclick = function() {
-
-                    // if (this.capturing) {
-                    //     this.camera.pause();
-                    // } else {
-                    //     this.camera.start();
-                    // }
-                    // this.capturing = !this.capturing;
-                // };
-            },
+                capturing = true;
+                document.getElementById("pause").style.display = "block";
+                document.getElementById("pause").onclick = function() {
+                    console.log(capturing);
+                    if (capturing) {
+                        camera.pause();
+                    } else {
+                        camera.start();
+                    }
+                    capturing = !capturing;
+                };
+            }.bind(this),
 
             onError: function(error) {
                 // TODO: log error
@@ -54,6 +65,8 @@ var channels = {
                 asciiContainer.style.display = "none";
                 document.getElementById("notSupported").style.display = "block";
             }
+
         });
+
     }
 }

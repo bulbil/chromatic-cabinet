@@ -88,7 +88,7 @@ var cube = {
 
         var rgbMaterial = new THREE.MeshBasicMaterial({
                 color: 0xffffff,
-                wireframe: true,
+                wireframe: false,
                 shading: THREE.FlatShading,
                 // enable vertex colors, which looks for vertexColors array in each face
                 vertexColors: THREE.VertexColors

@@ -13,7 +13,10 @@ gulp.task('static', function(){
 });
 
 gulp.task('scripts', function(){
-    return gulp.src('./js/**/*.js')
+    return gulp.src([
+        './js/**/*.js',
+        './deps/ascii-camera/script/*.js'
+        ])
         .pipe(jshint())
         .pipe(gulp.dest('dist/js'));
 });
@@ -29,16 +32,15 @@ gulp.task('styles', function(){
 
 
 // Task for serving blog with Browsersync
-gulp.task('serve', ['scripts','styles','static'], function () {
+gulp.task('serve', function () {
     bs.init({server: {baseDir: 'dist'}, port: 4000});
     // Reloads page when some of the already built files changed:
-    gulp.watch('_site/**/*.*').on('change', bs.reload);
+    gulp.watch('dist/**/*').on('change', bs.reload);
 });
 
 gulp.task('dependencies', function(){
-    var glob = mainBowerFiles('*.js');
-    glob.push('deps/**/*.js');
-    console.log(glob);
+    var glob = mainBowerFiles('**/*.js');
+    // glob.push('deps/ascii-camera/script/*.js');
     return gulp.src(glob)
         .pipe(concat('deps.min.js'))
         .pipe(uglify())
@@ -48,7 +50,8 @@ gulp.task('dependencies', function(){
 gulp.task('watch',function(){
     gulp.watch('./*.html', ['static']);
     gulp.watch('./js/**/*.js', ['scripts']);
+    gulp.watch('./deps/**/*.js', ['scripts']);
     gulp.watch('./sass/**/*.scss', ['styles']);
 });
 
-gulp.task('default', ['dependencies','watch','serve']);
+gulp.task('default', ['dependencies','styles','watch','scripts','serve']);
