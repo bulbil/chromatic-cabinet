@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chromatic Cabinet</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div id="pause">
+        <h1>*</h1>
+    </div>
+
+    <div id="ascii-wrapper">
+        <pre class='ascii' id='r-corrected'></pre>
+        <pre class='ascii' id='g-corrected'></pre>
+        <pre class='ascii' id='b-corrected'></pre>
+        <pre class='ascii' id='r'></pre>
+        <pre class='ascii' id='g'></pre>
+        <pre class='ascii' id='b'></pre>
+    </div>
+
+    <div id="info">
+        <h2>not supported</h2>
+    </div>
+
+    <script src="js/deps.min.js"></script>
+    <script src="js/ascii.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/ascii-channels.js"></script>
+    <script>
+        $(function(){
+
+            channels.init();
+
+        });
+    </script>
+</body>
+</html>
