@@ -2,7 +2,7 @@
 
 ![maxwell's ribbon 1861](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Tartan_Ribbon.jpg/293px-Tartan_Ribbon.jpg)
 
-![Munsell color tree](http://munsell.com/wp-content/uploads/2014/08/grammar-of-color-the-color-tree.jpg)
+![Munsell color tree](http://www.munsell.com/wp-content/uploads/2012/12/munsell-color-tree-300x298.jpg)
 
 ![cie 1931 color space with Munsell color names](https://upload.wikimedia.org/wikipedia/commons/5/5f/CIE-1931_diagram_in_LAB_space.svg)
 
