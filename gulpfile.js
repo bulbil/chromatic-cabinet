@@ -14,8 +14,7 @@ gulp.task('static', function(){
 
 gulp.task('scripts', function(){
     return gulp.src([
-        './js/**/*.js',
-        './deps/ascii-camera/script/*.js'
+        './js/**/*.js'
         ])
         .pipe(jshint())
         .pipe(gulp.dest('dist/js'));
@@ -40,7 +39,6 @@ gulp.task('serve', function () {
 
 gulp.task('dependencies', function(){
     var glob = mainBowerFiles('**/*.js');
-    // glob.push('deps/ascii-camera/script/*.js');
     return gulp.src(glob)
         .pipe(concat('deps.min.js'))
         .pipe(uglify())
@@ -50,7 +48,6 @@ gulp.task('dependencies', function(){
 gulp.task('watch',function(){
     gulp.watch('./*.html', ['static']);
     gulp.watch('./js/**/*.js', ['scripts']);
-    gulp.watch('./deps/**/*.js', ['scripts']);
     gulp.watch('./sass/**/*.scss', ['styles']);
 });
 

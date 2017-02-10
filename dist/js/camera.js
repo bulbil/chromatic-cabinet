@@ -16,7 +16,7 @@ var camera = (function() {
 		video.setAttribute('width', options.width);
 		video.setAttribute('height', options.height);
 
-		navigator.getUserMedia = navigator.getUserMedia || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
 		if (navigator.getUserMedia) {
@@ -106,8 +106,6 @@ var camera = (function() {
 
 		pause: pauseCapture,
 
-		stop: stopCapture,
-
-		canvas: function() { return canvas; }
+		stop: stopCapture
 	};
 })();
