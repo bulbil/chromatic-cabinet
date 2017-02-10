@@ -18,6 +18,7 @@
     "jquery": "^3.1.1",
     "three.js": "^0.84.0",
     "three.js-controls": "^0.0.67",
-    "reset-css": "^2.2.0"
+    "reset-css": "^2.2.0",
+    "d3": "^4.5.0"
   }
 }

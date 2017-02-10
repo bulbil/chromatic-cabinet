@@ -1,10 +1,36 @@
 @import "reset-css/reset.scss";
 
+// overall frame
+
 body, html {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+    font-family: Helvetica, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 48px;
 }
+
+// index
+
+div.landing {
+    
+    width: 75%;
+    margin: 15vh 12.5%;
+
+    & div {
+        text-align: center;
+        padding: 5vh;
+    }
+
+    & a, & a:visited, & a:focus, & a:hover { 
+        text-decoration: none;
+        color: black; 
+    }
+
+}
+
+// ascii camera
 
 pre { 
     font-family: Monospace;
@@ -29,9 +55,6 @@ div#ascii-wrapper {
 #pause {
     position: fixed;
     display: block;
-    font-family: Helvetica, Verdana, sans-serif;
-    font-weight: 700;
-    font-size: 48px;
     left: 100;
     top: 50;
     width: 20px;
@@ -39,4 +62,13 @@ div#ascii-wrapper {
     padding: 20px;
     text-align: center;
     vertical-align: middle;
+}
+
+// d3 enigma
+
+#enigma-wrapper {
+    border: 2px solid #444;
+    width: 700px;
+    height: 500px;
+    margin: 5vh auto; 
 }
