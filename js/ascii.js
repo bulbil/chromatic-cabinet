@@ -71,6 +71,7 @@ var ascii = (function() {
 		}
 
 		var perceptionShift = [0.299,0.587,0.114];
+		// var perceptionShift = [0.2126,0.7152,0.0722];
 
 		// calculate contrast factor
 		// http://www.dfstudios.co.uk/articles/image-processing-algorithms-part-5/

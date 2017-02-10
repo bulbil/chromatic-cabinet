@@ -30,6 +30,24 @@ div.landing {
 
 }
 
+#return {
+    position: fixed;
+    // display: block;
+    right: 50px;
+    top: 50px;
+    width: 20px;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+
+    & a, & a:visited, & a:focus, & a:hover { 
+        text-decoration: none;
+        color: black; 
+    }
+
+}
+
 // ascii camera
 
 pre { 
@@ -47,16 +65,17 @@ pre {
 div#ascii-wrapper {
     
     display: block;
-    width: 90vw;
-    margin: 5vw 5vw;
+    width: 75%;
+    height: 90vh;
+    margin: 5vw 12.5%;
     overflow: hidden;
 }
 
 #pause {
     position: fixed;
     display: block;
-    left: 100;
-    top: 50;
+    right: 50px;
+    top: 125px;
     width: 20px;
     height: 20px;
     padding: 20px;
